@@ -12,7 +12,9 @@ if not os.path.exists(file_path):
     url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/tag/v1.0/similarity.pkl"
     r = requests.get(url)
     with open(file_path, "wb") as f:
-        f.write(r.content)
+        for chunk in r.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
 
 similarity = pickle.load(open('similarity.pkl','rb'))
 
