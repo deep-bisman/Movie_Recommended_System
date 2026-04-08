@@ -9,9 +9,9 @@ import os
 file_path = "similarity.pkl"
 
 if not os.path.exists(file_path):
-    url = "https://drive.google.com/uc?id=1C-34ly38iRPuInp9mAj1HyB4IHzwCA-B"
-    r = requests.get(url)
-    gdown.download(url, file_path, quiet=False)
+    file_id = "1C-34ly38iRPuInp9mAj1HyB4IHzwCA-B"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, file_path, quiet=False,fuzzy=True)
 
 similarity = pickle.load(open('similarity.pkl','rb'))
 
