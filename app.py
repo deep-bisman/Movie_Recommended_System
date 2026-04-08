@@ -9,7 +9,7 @@ import os
 file_path = "similarity.pkl"
 
 if not os.path.exists(file_path):
-    url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/download/untagged-d95c5004c66fa5ce4c81/similarity.pkl"
+    url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/tag/v1.0/similarity.pkl"
     r = requests.get(url)
     with open(file_path, "wb") as f:
         f.write(r.content)
