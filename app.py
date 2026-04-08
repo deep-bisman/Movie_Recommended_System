@@ -9,12 +9,30 @@ import os
 file_path = "similarity.pkl"
 
 if not os.path.exists(file_path):
-    url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/tag/v1.0/similarity.pkl"
-    r = requests.get(url)
-    with open(file_path, "wb") as f:
-        for chunk in r.iter_content(chunk_size=8192):
-            if chunk:
-                f.write(chunk)
+    url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/download/v1.0/similarity.pkl"
+    
+    st.write("Downloading similarity file... ⏳")
+    
+    try:
+        r = requests.get(url, stream=True, timeout=30)
+        r.raise_for_status()
+
+        with open(file_path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+
+        st.write("Download complete ✅")
+
+    except Exception as e:
+        st.error(f"Download failed: {e}")
+        st.stop()
+
+# ✅ Check again (VERY IMPORTANT)
+if not os.path.exists(file_path):
+    st.error("File still missing after download ❌")
+    st.stop()
+
 
 similarity = pickle.load(open('similarity.pkl','rb'))
 
