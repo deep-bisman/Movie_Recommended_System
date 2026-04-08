@@ -4,12 +4,12 @@ import requests
 import pandas as pd
 
 import os
-import requests
+
 
 file_path = "similarity.pkl"
 
 if not os.path.exists(file_path):
-    url = "https://drive.google.com/file/d/1C-34ly38iRPulnp9mAj1HyB4lHzWCA-B/view?usp=drive_link"
+    url = "https://drive.google.com/uc?id=1C-34ly38iRPuInp9mAj1HyB4IHzwCA-B"
     r = requests.get(url)
     with open(file_path, "wb") as f:
         f.write(r.content)
