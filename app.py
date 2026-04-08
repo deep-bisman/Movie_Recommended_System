@@ -9,9 +9,10 @@ import os
 file_path = "similarity.pkl"
 
 if not os.path.exists(file_path):
-    url = "https://drive.google.com/file/d/1C-34ly38iRPulnp9mAj1HyB4lHzWCA-B/view?usp=sharing"
-
-    gdown.download(url, file_path, quiet=False)
+    url = "https://github.com/deep-bisman/Movie_Recommended_System/releases/download/untagged-d95c5004c66fa5ce4c81/similarity.pkl"
+    r = requests.get(url)
+    with open(file_path, "wb") as f:
+        f.write(r.content)
 
 similarity = pickle.load(open('similarity.pkl','rb'))
 
